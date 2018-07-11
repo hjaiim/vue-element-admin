@@ -1,14 +1,11 @@
 <template>
-  <div :id="codeId?codeId:defaultId" class="code-box">
-    <!--<img :src="src" alt="" class="code-img">-->
-  </div>
+  <div :id="codeId?codeId:defaultId" class="code-box"></div>
 </template>
 <script type="text/ecmascript-6">
-  import *as g from 'jslib/global';
   export default{
     created(){
-      g.event.removeAllListener("INIT_QRCODE");
-      g.event.addEventListenerOnce('INIT_QRCODE', this.initQrCode);
+      this.$utils.event.removeAllListener("INIT_QRCODE");
+      this.$utils.event.addEventListenerOnce('INIT_QRCODE', this.initQrCode);
     },
     data(){
       return {
@@ -58,5 +55,7 @@
 
 </script>
 <style type="text/css" lang="sass" rel="stylesheet/css" scoped>
-
+  .code-box{
+    width: 168px;
+  }
 </style>

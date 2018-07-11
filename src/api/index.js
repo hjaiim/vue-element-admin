@@ -54,7 +54,7 @@ axios.interceptors.response.use(response=>
     }
 
     if (parseInt(response.data.code) !== web_config.successCode)
-    {//参数格式不对,接口正常,code不对.
+    {//接口正常,code码异常.
       return Promise.reject(response.data)
     }
   }

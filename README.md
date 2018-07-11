@@ -59,14 +59,14 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ### 线上
 
 ```
-1.axios                              # 请求数据  
-2.element-ui(pc),mint-ui(h5)         # ui组件  
-3.hjai-utils                         # 自定义工具类  
+1.axios                              # 请求数据
+2.element-ui(pc),mint-ui(h5)         # ui组件
+3.hjai-utils                         # 自定义工具类
 4.qs                                 # 解析URL参数
 ```
 ### 本地
-```
-1.node-sass                          # sass  
-2.sass-loader
 
+```
+1.node-sass                          # sass
+2.sass-loader
 ```

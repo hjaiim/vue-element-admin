@@ -8,10 +8,6 @@ Vue.use(VueRouter)
 
 import Index from '../components/index/index.vue';
 import Login from '../components/login/login.vue';
-import QrCode from '../components/qrCode/qrCode.vue';
-import FindCode from '../components/findCode/findCode.vue';
-import Activity from '../components/activity/activity.vue';
-import Vuex from '../components/vuexTest/vuexTest.vue';
 
 let router = new VueRouter({
   mode: 'history',
@@ -27,34 +23,11 @@ let router = new VueRouter({
       name: "登录页",
       component: Login,
       meta: {requireLogin: false}
-    },
-    {
-      path: '/qrcode',
-      name: "我的二维码",
-      component: QrCode,
-      meta: {requireLogin: true}
-    },
-    {
-      path: '/findcode',
-      name: "查找二维码",
-      component: FindCode,
-      meta: {requireLogin: true}
-    },
-    {
-      path: '/activity',
-      name: "活动管理",
-      component: Activity,
-      meta: {requireLogin: true}
-    },
-    {
-      path: '/vuex',
-      name: "vuex",
-      component: Vuex,
-      meta: {requireLogin: false}
     }
   ]
 })
 
+//全局钩子函数,在跳转之前执行
 router.beforeEach((to, from, next) =>
 {
   console.log('导航守卫--执行')
