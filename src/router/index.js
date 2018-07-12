@@ -3,7 +3,7 @@
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import * as g from 'jslib/global';
+import * as utils from 'hjai-utils/dist/utils.min.js';
 Vue.use(VueRouter)
 
 import Index from '../components/index/index.vue';
@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) =>
   console.log('导航守卫--执行')
   if (to.meta.requireLogin)
   {
-    if (g.utils.getSessionData('isLogin'))
+    if (utils.data.getData('isLogin','ses'))
     {//登录状态
       next();
     }
@@ -49,7 +49,7 @@ router.beforeEach((to, from, next) =>
   {
     if (to.path === '/login')
     {
-      if (g.utils.getSessionData('isLogin'))
+      if (utils.data.getData('isLogin','ses'))
       {//防止手动输入login,默认跳首页
         next('/');
       }

@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import qs from 'qs';
-import *as g from 'jslib/global';
+import * as utils from 'hjai-utils/dist/utils.min.js';
 import router from '../router';
 import web_config from 'jslib/config/config';
 import {Loading} from 'element-ui';
@@ -43,13 +43,11 @@ axios.interceptors.response.use(response=>
     {//未登录
 
       //更新sessionStorage登录状态(登出)
-      g.utils.setSessionData('isLogin', false);
+      utils.data.setData('isLogin', false,'ses');
 
       router.push({
         path: '/login',
-        query: {
-          redirect: router.history.current.fullPath
-        }
+        query: getQuery(router.history.current.fullPath)
       })
     }
 
@@ -137,9 +135,23 @@ export const ALL = (promiseArr)=>
   return axios.all(promiseArr)
 }
 
-
 function closeLoading()
 {
   let loading = Loading.service({});
   loading.close();
+}
+
+/**
+ * 1.去掉路由带的'/'
+ * 2.如果是默认页面,则不需要'redirect'
+ * @param path
+ */
+function getQuery(path)
+{
+  let queryObj = {};
+  if (path != '/')
+  {
+    queryObj['redirect'] = path.replace('/', '');
+  }
+  return queryObj;
 }
