@@ -9,7 +9,6 @@
 <script type="text/ecmascript-6">
   import sha256 from 'sha256';
   import API from 'api/api_login';
-  import * as g from 'jslib/global';
   export default{
     created(){
       console.log(this.$route.query.redirect)
@@ -34,7 +33,7 @@
         {
           console.log('登录成功');
           //更新sessionStorage登录状态(登录)
-          g.utils.setSessionData('isLogin', true);
+          this.$utils.setSessionData('isLogin', true,'ses');
 
           //回调页面
           this.$router.push({
