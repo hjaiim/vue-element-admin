@@ -12,16 +12,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
 
-/**
- * 挂全局方法
- */
+// 挂全局方法
 import * as g from './assets/jslib/global';
 Vue.prototype.$g = g;
 setWindowAttribute('g', g);
 
-/**
- * 挂工具类方法
- */
+// 挂工具类方法
 import * as utils from 'hjai-utils/dist/utils.min.js';
 Vue.prototype.$utils = utils;
 setWindowAttribute('utils', utils);
@@ -36,6 +32,8 @@ new Vue({
 
 /**
  * 挂载window(本地开发,方便测试数据)
+ * @param $attr 属性名
+ * @param $value 属性值
  */
 function setWindowAttribute($attr, $value)
 {

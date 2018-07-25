@@ -32,10 +32,9 @@
         API.login(loginParams).then((result)=>
         {
           console.log('登录成功');
-          //更新sessionStorage登录状态(登录)
+          // 更新sessionStorage登录状态(登录)
           this.$utils.setSessionData('isLogin', true,'ses');
-
-          //回调页面
+          // 回调页面
           this.$router.push({
             path: this.$route.query.redirect || '/'
           });

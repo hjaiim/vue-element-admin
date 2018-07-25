@@ -27,18 +27,18 @@ let router = new VueRouter({
   ]
 })
 
-//全局钩子函数,在跳转之前执行
+// 全局钩子函数,在跳转之前执行
 router.beforeEach((to, from, next) =>
 {
   console.log('导航守卫--执行')
   if (to.meta.requireLogin)
   {
-    if (utils.data.getData('isLogin','ses'))
-    {//登录状态
+    if (utils.data.getData('isLogin', 'ses'))
+    { // 登录状态
       next();
     }
     else
-    {//未登录,跳登录页,再回调当前页
+    { // 未登录,跳登录页,再回调当前页
       next({
         path: '/login',
         query: getQuery(to.fullPath)
@@ -49,8 +49,8 @@ router.beforeEach((to, from, next) =>
   {
     if (to.path === '/login')
     {
-      if (utils.data.getData('isLogin','ses'))
-      {//防止手动输入login,默认跳首页
+      if (utils.data.getData('isLogin', 'ses'))
+      { // 防止手动输入login,默认跳首页
         next('/');
       }
       else

@@ -13,7 +13,7 @@ axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? web_config.dev
 axios.defaults.timeout = web_config.timeout;
 axios.defaults.withCredentials = true;
 
-//添加一个请求拦截器
+// 添加一个请求拦截器
 axios.interceptors.request.use(config=>
 {
   let loading = Loading.service({
@@ -40,9 +40,9 @@ axios.interceptors.response.use(response=>
   if (response.data && response.data.code)
   {
     if (parseInt(response.data.code) === web_config.unLoginCode)
-    {//未登录
+    { // 未登录
 
-      //更新sessionStorage登录状态(登出)
+      // 更新sessionStorage登录状态(登出)
       utils.data.setData('isLogin', false,'ses');
 
       router.push({
@@ -52,7 +52,7 @@ axios.interceptors.response.use(response=>
     }
 
     if (parseInt(response.data.code) !== web_config.successCode)
-    {//接口正常,code码异常.
+    { // 接口正常,code码异常.
       return Promise.reject(response.data)
     }
   }
@@ -119,7 +119,7 @@ axios.interceptors.response.use(response=>
   return Promise.reject(error);
 });
 
-//通用方法
+// 通用方法
 export const POST = (url, params) =>
 {
   return axios.post(url, params).then(res => res.data).then(res => res.data)

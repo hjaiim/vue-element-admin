@@ -4,7 +4,7 @@
 import * as API from './';
 
 export default {
-  //消息列表
+  // 消息列表
   message: params =>
   {
     return API.POST('message/getMessageOverview', params)
