@@ -4,7 +4,7 @@
 <script type="text/ecmascript-6">
   export default{
     created(){
-      this.preload();
+      this.preloadData();
     },
     data(){
       return {
@@ -16,7 +16,7 @@
     },
     watch: {},
     methods: {
-      preload(){
+      preloadData(){
 
       }
     }

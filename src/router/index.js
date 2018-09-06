@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) =>
   console.log('导航守卫--执行')
   if (to.meta.requireLogin)
   {
-    if (utils.data.getData('isLogin', 'ses'))
+    if (utils.data.getData('isLogin'))
     { // 登录状态
       next();
     }
@@ -49,7 +49,7 @@ router.beforeEach((to, from, next) =>
   {
     if (to.path === '/login')
     {
-      if (utils.data.getData('isLogin', 'ses'))
+      if (utils.data.getData('isLogin'))
       { // 防止手动输入login,默认跳首页
         next('/');
       }

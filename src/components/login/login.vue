@@ -33,7 +33,8 @@
         {
           console.log('登录成功');
           // 更新sessionStorage登录状态(登录)
-          this.$utils.setSessionData('isLogin', true,'ses');
+          this.$utils.setSessionData('isLogin', true);
+
           // 回调页面
           this.$router.push({
             path: this.$route.query.redirect || '/'

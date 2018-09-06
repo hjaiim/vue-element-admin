@@ -16,34 +16,27 @@ axios.defaults.withCredentials = true;
 // 添加一个请求拦截器
 axios.interceptors.request.use(config=>
 {
-  let loading = Loading.service({
-    fullscreen: true,
-    text: '拼命加载中...'
-  });
-
-  if (config.method === 'post')
-  {
-    config.data = qs.stringify(config.data);
-  }
+//  if (config.method === 'post')
+//  {
+//    config.data = qs.stringify(config.data);
+//  }
   return config;
 }, error=>
 {
   // Do something with request error
-  closeLoading();
   return Promise.reject(error);
 });
 
 // 添加一个响应拦截器
 axios.interceptors.response.use(response=>
 {
-  closeLoading();
   if (response.data && response.data.code)
   {
     if (parseInt(response.data.code) === web_config.unLoginCode)
     { // 未登录
 
-      // 更新sessionStorage登录状态(登出)
-      utils.data.setData('isLogin', false,'ses');
+      // 清除登录状态(登出)
+      utils.data.delData('isLogin');
 
       router.push({
         path: '/login',
@@ -122,7 +115,7 @@ axios.interceptors.response.use(response=>
 // 通用方法
 export const POST = (url, params) =>
 {
-  return axios.post(url, params).then(res => res.data).then(res => res.data)
+  return axios.post(url, params).then(res => res.data)
 }
 
 export const GET = (url, params) =>
@@ -133,12 +126,6 @@ export const GET = (url, params) =>
 export const ALL = (promiseArr)=>
 {
   return axios.all(promiseArr)
-}
-
-function closeLoading()
-{
-  let loading = Loading.service({});
-  loading.close();
 }
 
 /**

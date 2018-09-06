@@ -4,6 +4,7 @@
  */
 
 export default {
+  // 一下方法已经加入到工具类库中,在此只作为实例.
   setSessionData: (k, v)=>
   {
     sessionStorage.setItem(k, JSON.stringify(v));
