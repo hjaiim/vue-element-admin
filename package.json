@@ -13,7 +13,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.4.0",
-    "hjai-utils": "^1.0.3",
+    "hjai-utils": "^1.0.5",
     "qs": "^6.5.2",
     "sha256": "^0.2.0",
     "vue": "^2.5.2",

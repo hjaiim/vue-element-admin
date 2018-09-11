@@ -32,8 +32,8 @@
         API.login(loginParams).then((result)=>
         {
           console.log('登录成功');
-          // 更新sessionStorage登录状态(登录)
-          this.$utils.setSessionData('isLogin', true);
+          // 存储登录状态(localStorage)
+          this.$utils.data.setData('isLogin', true);
 
           // 回调页面
           this.$router.push({

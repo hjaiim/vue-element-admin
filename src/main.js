@@ -13,7 +13,7 @@ Vue.use(ElementUI);
 
 
 // 挂全局方法
-import * as g from './assets/jslib/global';
+import * as g from './libs/global';
 Vue.prototype.$g = g;
 setWindowAttribute('g', g);
 
@@ -21,6 +21,10 @@ setWindowAttribute('g', g);
 import * as utils from 'hjai-utils/dist/utils.min.js';
 Vue.prototype.$utils = utils;
 setWindowAttribute('utils', utils);
+
+// 公共css
+import 'css/basic.scss';
+
 
 Vue.config.productionTip = false;
 

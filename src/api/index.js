@@ -5,21 +5,21 @@ import axios from 'axios';
 import qs from 'qs';
 import * as utils from 'hjai-utils/dist/utils.min.js';
 import router from '../router';
-import web_config from 'jslib/config/config';
+import web_config from 'libs/config/config';
 import {Loading} from 'element-ui';
 
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+//axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? web_config.devServer : web_config.server;
 axios.defaults.timeout = web_config.timeout;
 axios.defaults.withCredentials = true;
 
 // 添加一个请求拦截器
 axios.interceptors.request.use(config=>
-{
-//  if (config.method === 'post')
-//  {
-//    config.data = qs.stringify(config.data);
-//  }
+{ // 参数格式为form data(默认request payload)
+  if (config.method === 'post' && config.needFormData)
+  {
+    config.data = qs.stringify(config.data);
+  }
   return config;
 }, error=>
 {
@@ -53,7 +53,6 @@ axios.interceptors.response.use(response=>
 }, error=>
 {
   // Do something with response error
-  closeLoading();
   if (error.response)
   {
     switch (error.response.status)
@@ -113,9 +112,9 @@ axios.interceptors.response.use(response=>
 });
 
 // 通用方法
-export const POST = (url, params) =>
+export const POST = (url, params, config = {}) =>
 {
-  return axios.post(url, params).then(res => res.data)
+  return axios.post(url, params, config).then(res => res.data)
 }
 
 export const GET = (url, params) =>

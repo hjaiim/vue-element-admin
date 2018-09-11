@@ -5,11 +5,13 @@ import * as API from './';
 
 export default {
   // 登录
-  login: params => {
-    return API.POST('user/userLogin', params)
+  login: params =>
+  {
+    return API.POST('user/userLogin', params, {needFormData: true})
   },
   // 登出
-  logout: params => {
+  logout: params =>
+  {
     return API.POST('user/userLoginOut', params)
   }
 }
