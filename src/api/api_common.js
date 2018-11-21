@@ -2,7 +2,7 @@
  * Created by haojun on 2018/6/2.
  */
 import * as API from './';
-import web_config from 'jslib/config/config';
+import web_config from 'libs/config/config';
 const STATIC_URL = process.env.NODE_ENV === 'development' ? window.location.origin : web_config.server
 
 export default {
